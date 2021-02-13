@@ -331,8 +331,23 @@ FUNCTION {format.date.nomonth}
   if$
 }
 
+% Higham's approach to inserting the DOI link at the title field
 FUNCTION {format.btitle}
 { title emphasize
+url empty$
+    {
+    doi empty$
+      {
+      eprint empty$
+        { }
+        { "\href{http://arxiv.org/abs/" eprint * "}{" * swap$ * "}" * }
+      if$
+      }
+      { "\href{http://dx.doi.org/" doi * "}{" * swap$ * "}" * }
+    if$
+    }
+    { "\href{" url * "}{" * swap$ * "}" * }
+  if$
 }
 
 FUNCTION {tie.or.space.connect}
