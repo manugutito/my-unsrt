@@ -195,6 +195,14 @@ FUNCTION {emphasize}
   if$
 }
 
+% I added this function to bolden the volume number
+FUNCTION {bold}
+{ duplicate$ empty$
+    { pop$ "" }
+    { "\textbf{" swap$ * "}" * }
+  if$
+}
+
 INTEGERS { nameptr namesleft numnames }
 
 FUNCTION {format.names}
@@ -444,6 +452,7 @@ FUNCTION {format.pages}
 
 FUNCTION {format.vol.num.pages}
 { volume field.or.null
+  bold % The volume number is in boldface
   number empty$
     'skip$
     { "(" number * ")" * *
@@ -457,7 +466,7 @@ FUNCTION {format.vol.num.pages}
     'skip$
     { duplicate$ empty$
         { pop$ format.pages }
-        { ":" * pages n.dashify * }
+        { " " * pages n.dashify * }
       if$
     }
   if$
