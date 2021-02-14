@@ -466,7 +466,7 @@ FUNCTION {format.vol.num.pages}
     'skip$
     { duplicate$ empty$
         { pop$ format.pages }
-        { " " * pages n.dashify * }
+        { " " * pages n.dashify * } % Remove colon that separates vol/number from pages
       if$
     }
   if$
@@ -813,6 +813,21 @@ FUNCTION {mastersthesis}
   format.title "title" output.check
   new.block
   "Master's thesis" format.thesis.type output.nonnull
+  school "school" output.check
+  address output
+  format.date "year" output.check
+  new.block
+  note output
+  fin.entry
+}
+
+FUNCTION {bachelorsthesis}
+{ output.bibitem
+  format.authors "author" output.check
+  new.block
+  format.title "title" output.check
+  new.block
+  "Bachelor's thesis" format.thesis.type output.nonnull
   school "school" output.check
   address output
   format.date "year" output.check
