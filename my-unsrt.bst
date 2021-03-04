@@ -351,7 +351,8 @@ url empty$
         { "\href{http://arxiv.org/abs/" eprint * "}{" * swap$ * "}" * }
       if$
       }
-      { "\href{http://dx.doi.org/" doi * "}{" * swap$ * "}" * }
+%       { "\href{http://dx.doi.org/" doi * "}{" * swap$ * "}" * }
+      { "\href{https://doi.org/" doi * "}{" * swap$ * "}" * }
     if$
     }
     { "\href{" url * "}{" * swap$ * "}" * }
